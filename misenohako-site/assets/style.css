@@ -236,3 +236,25 @@ details p{padding:0 0 22px;color:var(--muted);font-size:.95rem}
   .dev-card > *{flex-shrink:0}
   .dev-card p{flex:1;flex-shrink:1;margin:0}
 }
+
+/* ---- 銀座カードのミニプレビューの色 ---- */
+.theme-ginza{--bg:#0E0C09;--fg:#EDE6D3;--ac:#A9812F;--sub:#3A331F;font-family:"Zen Old Mincho","Hiragino Mincho ProN",serif;letter-spacing:.03em}
+.theme-ginza .mock-nav{letter-spacing:.16em}
+.theme-ginza::after{background:radial-gradient(circle,#A9812F,transparent 70%);opacity:.18;width:220px;height:220px;right:-60px;top:-60px}
+
+/* ---- スタンダードプランの例（銀座レストラン） ---- */
+.standard-card{margin-top:20px;background:#0E0C09;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+.standard-card-tag{margin:20px 22px 0;align-self:flex-start;padding:4px 12px;border-radius:999px;background:#A9812F;color:#1A1306;font-size:.75rem;font-weight:700}
+.standard-card .mock{margin:16px 22px 0;border-radius:10px}
+.standard-card-body{padding:20px 22px 26px;display:flex;flex-direction:column;gap:6px}
+.standard-card-body h3{color:#fff;font-size:1.1rem;font-weight:900}
+.standard-card-body .sample-name{color:#C9A96A;font-size:.85rem}
+.standard-card-body p:not(.sample-name){margin-top:2px;color:#D8D2C0;font-size:.92rem}
+.standard-card-body .btn-ghost{margin-top:10px;align-self:flex-start;border-color:rgba(255,255,255,.35);color:#fff}
+.standard-card-body .btn-ghost:hover{background:rgba(255,255,255,.08)}
+@media (min-width:860px){
+  .standard-card{flex-direction:row;align-items:stretch}
+  .standard-card-tag{margin:22px 0 0 26px}
+  .standard-card .mock{margin:22px 0 22px 26px;width:340px;flex-shrink:0;align-self:center}
+  .standard-card-body{flex:1;justify-content:center;padding:22px 28px}
+}
