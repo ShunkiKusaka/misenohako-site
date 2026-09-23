@@ -1,0 +1,229 @@
+/* 銀座フレンチ「Racine」：黒×真鍮金、明朝×ゴシックの2書体構成 */
+:root{
+  --bg:#0E0C09;          /* ほぼ黒、わずかに温かい焦茶 */
+  --bg-2:#17130E;        /* セクションの区切り用、一段明るい黒 */
+  --paper:#F6F1E4;       /* 生成りの紙色（明るいセクション用） */
+  --ink:#241F16;         /* 紙の上の文字色 */
+  --cream:#EDE6D3;       /* 黒背景の上の本文文字色 */
+  --gold:#A9812F;        /* 真鍮金（アクセント、面積は小さく） */
+  --gold-soft:#C9A96A;
+  --line:rgba(169,129,47,.32);
+  --line-soft:rgba(237,230,211,.16);
+  --serif:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+}
+body{background:var(--bg);color:var(--cream);font-family:var(--sans);line-height:1.9;padding-bottom:0}
+::selection{background:var(--gold);color:var(--bg)}
+
+/* ---- ヘッダー ---- */
+.header{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:18px 24px;mix-blend-mode:normal}
+.header::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,12,9,.75),transparent);pointer-events:none;z-index:-1}
+.logo{font-family:var(--serif);font-size:1.05rem;letter-spacing:.32em;color:var(--cream);text-decoration:none;padding-left:.32em}
+.header-right{display:flex;align-items:center;gap:22px}
+.header-tel{display:none;color:var(--gold-soft);text-decoration:none;font-size:.85rem;letter-spacing:.05em}
+.menu-toggle{width:40px;height:40px;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:7px;background:none;border:0;cursor:pointer}
+.menu-toggle span{display:block;height:1px;width:26px;background:var(--cream);transition:transform .35s ease,opacity .25s ease,width .35s ease}
+.menu-toggle:hover span{width:26px}
+body.menu-open .menu-toggle span:first-child{transform:translateY(4px) rotate(45deg)}
+body.menu-open .menu-toggle span:last-child{transform:translateY(-4px) rotate(-45deg)}
+@media (min-width:860px){.header{padding:26px 48px}.header-tel{display:block}}
+
+/* ---- 全画面メニュー ---- */
+.overlay-menu{position:fixed;inset:0;z-index:35;background:#0B0A07;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
+  opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .4s ease,visibility .4s,transform .4s ease}
+.overlay-menu.is-open{opacity:1;visibility:visible;transform:translateY(0)}
+.overlay-menu ul{display:flex;flex-direction:column;align-items:center;gap:6px}
+.overlay-menu a{font-family:var(--serif);font-size:clamp(1.3rem,5vw,1.9rem);letter-spacing:.1em;color:var(--cream);text-decoration:none;padding:12px 0;transition:color .2s ease}
+.overlay-menu a:hover{color:var(--gold-soft)}
+.overlay-tel{margin-top:36px;color:var(--gold-soft);text-decoration:none;letter-spacing:.05em;font-size:.9rem}
+body.menu-open{overflow:hidden}
+
+/* ---- ヒーロー：1回だけ、静かにフェードイン ---- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 24px 64px;overflow:hidden}
+.hero-bg{position:absolute;inset:-4%;background:
+  radial-gradient(ellipse 70% 55% at 50% 8%,rgba(169,129,47,.14),transparent 60%),
+  linear-gradient(180deg,#100D09 0%,#0E0C09 55%,#0B0A07 100%);
+  animation:heroZoom 26s ease-in-out infinite alternate;
+}
+.hero-bg::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(115deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);opacity:.5}
+@keyframes heroZoom{from{transform:scale(1.06) translateY(0)}to{transform:scale(1) translateY(-1%)}}
+.hero-inner{position:relative;max-width:1080px;margin:0 auto;width:100%}
+.hero-eyebrow{font-size:.78rem;letter-spacing:.28em;color:var(--gold-soft);opacity:0;animation:riseIn .9s ease .15s forwards}
+.hero h1{margin-top:18px;font-family:var(--serif);font-weight:700;font-size:clamp(2.6rem,9vw,5.4rem);line-height:1.35;letter-spacing:.05em}
+.hero h1 span{display:block;opacity:0;transform:translateY(18px);animation:riseIn .9s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 span:nth-child(1){animation-delay:.35s}
+.hero h1 span:nth-child(2){animation-delay:.55s}
+.hero-lead{margin-top:26px;max-width:32em;color:#C9C2AE;font-size:.98rem;opacity:0;animation:riseIn .9s ease .85s forwards}
+.hero-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;opacity:0;animation:riseIn .9s ease 1.05s forwards}
+@keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  .hero-eyebrow,.hero h1 span,.hero-lead,.hero-cta{animation:none;opacity:1;transform:none}
+  .hero-bg{animation:none}
+}
+@media (min-width:860px){.hero{padding:0 48px 96px}}
+
+/* ---- ボタン ---- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border:1px solid var(--line);color:var(--cream);text-decoration:none;font-size:.9rem;letter-spacing:.08em;transition:border-color .25s ease,background-color .25s ease}
+.btn:hover{border-color:var(--gold)}
+.btn-fill{background:var(--gold);color:#1A1306;border-color:var(--gold)}
+.btn-fill:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
+
+/* ---- セクション共通 ---- */
+.section{padding:88px 24px}
+.section-inner{max-width:1080px;margin:0 auto}
+.section-dark{background:var(--bg-2)}
+.section-paper{background:var(--paper);color:var(--ink)}
+.eyebrow{font-size:.78rem;letter-spacing:.28em;color:var(--gold)}
+.section-paper .eyebrow{color:#8A6A22}
+.section h2{margin-top:14px;font-family:var(--serif);font-weight:700;font-size:clamp(1.7rem,4.6vw,2.5rem);letter-spacing:.04em;line-height:1.6}
+@media (min-width:860px){.section{padding:128px 48px}}
+
+/* ---- about：非対称の2カラム ---- */
+.about-grid{display:grid;gap:40px}
+.about-lead{font-family:var(--serif);font-size:1.15rem;line-height:2;color:var(--cream)}
+.about-body{color:#B9B29B;font-size:.95rem;line-height:2}
+.about-body p+p{margin-top:1.2em}
+@media (min-width:860px){.about-grid{grid-template-columns:1fr 1.2fr;gap:80px}}
+
+/* ---- コース：メニュー表のような一覧（カードにしない） ---- */
+.menu-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:22px;margin-bottom:8px;border-bottom:1px solid var(--line)}
+.menu-head h3{font-family:var(--serif);font-size:1.3rem;letter-spacing:.06em}
+.menu-head .price{font-family:var(--serif);font-size:1.15rem;color:var(--gold-soft)}
+.course-list{margin-top:8px}
+.course{display:grid;grid-template-columns:5em 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line-soft)}
+.course:last-child{border-bottom:0}
+.course-no{font-family:var(--serif);font-size:.85rem;color:var(--gold-soft);letter-spacing:.05em;padding-top:.2em}
+.course-name{font-family:var(--serif);font-size:1.08rem;letter-spacing:.03em}
+.course-desc{margin-top:6px;font-size:.85rem;color:#A79E84}
+.menu-note{margin-top:28px;font-size:.82rem;color:#8B836C}
+@media (min-width:860px){.course{grid-template-columns:7em 1fr}}
+
+/* ---- シェフ ---- */
+.chef-grid{display:grid;gap:36px;align-items:center}
+.chef-lead{font-family:var(--serif);font-size:1.05rem;line-height:2;color:#2E2818}
+.chef-body{font-size:.92rem;color:#5B5136;line-height:1.95}
+@media (min-width:860px){.chef-grid{grid-template-columns:.8fr 1.2fr;gap:64px}}
+
+/* ---- 数字帯：装飾ではなく実データ ---- */
+.numbers{background:var(--bg-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.numbers-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr;padding:0 24px}
+.num{display:flex;flex-direction:column;align-items:center;text-align:center;padding:34px 0;border-bottom:1px solid var(--line-soft)}
+.num:last-child{border-bottom:0}
+.num-figure{font-family:var(--serif);font-size:clamp(2.2rem,7vw,3.2rem);color:var(--gold-soft);letter-spacing:.02em}
+.num-figure small{font-size:.5em;margin-left:.15em;color:#8B836C}
+.num-label{margin-top:8px;font-size:.8rem;letter-spacing:.08em;color:#A79E84}
+@media (min-width:860px){
+  .numbers-inner{grid-template-columns:repeat(3,1fr);padding:0 48px}
+  .num{padding:56px 24px;border-bottom:0;border-left:1px solid var(--line-soft)}
+  .num:first-child{border-left:0}
+}
+
+/* ---- about：引用のような見出しを、あえて余白の中に置く ---- */
+.about-wrap{max-width:900px}
+.pull-quote{margin-top:20px;font-family:var(--serif);font-size:clamp(1.5rem,4.4vw,2.15rem);line-height:1.8;letter-spacing:.03em;color:var(--cream);max-width:16em}
+.about-body{margin-top:40px;color:#B9B29B;font-size:.95rem;line-height:2;max-width:34em}
+.about-body p+p{margin-top:1.2em}
+
+.section-note{margin-top:14px;color:#A79E84;font-size:.9rem;max-width:34em}
+
+/* ---- 個室・宴会場 ---- */
+.room-list{margin-top:48px;display:grid;gap:48px}
+.room{display:grid;gap:20px}
+.room-body h3{font-family:var(--serif);font-size:1.2rem;letter-spacing:.03em;line-height:1.6}
+.room-body p{margin-top:12px;font-size:.88rem;color:#A79E84;line-height:1.9}
+.room-body dl{margin-top:16px;padding-top:16px;border-top:1px solid var(--line-soft);display:flex;gap:10px;font-size:.85rem}
+.room-body dt{color:var(--gold-soft)}
+.room-body dd{color:#B9B29B}
+@media (min-width:860px){
+  .room{grid-template-columns:1.1fr 1fr;align-items:center;gap:56px}
+  .room:nth-child(even){direction:rtl}
+  .room:nth-child(even) > *{direction:ltr}
+}
+
+/* ---- ギャラリー：画面いっぱいに ---- */
+.section-bleed{padding:0}
+.gallery{display:grid;gap:2px;grid-template-columns:1fr 1fr}
+.gallery .ph:first-child{grid-column:1/-1}
+@media (min-width:860px){
+  .gallery{grid-template-columns:1.4fr 1fr 1fr 1fr;grid-auto-rows:220px}
+  .gallery .ph:first-child{grid-column:1/3;grid-row:1/3}
+}
+.ph{--ph-bg:#1D1811;--ph-fg:#8A7E5E}
+
+/* ---- 予約：個室と宴会場で分ける ---- */
+.reserve{text-align:center}
+.reserve .eyebrow{display:block}
+.reserve-tel{display:block;margin:28px 0 6px;font-family:var(--serif);font-size:clamp(1.8rem,6vw,2.6rem);letter-spacing:.06em;color:var(--cream);text-decoration:none}
+.reserve-note{color:#A79E84;font-size:.88rem}
+.reserve-online{margin-top:26px}
+.reserve-split{margin-top:48px;padding-top:40px;border-top:1px solid var(--line-soft);display:grid;gap:36px;text-align:left}
+.reserve-split h3{font-family:var(--serif);font-size:1.05rem;letter-spacing:.03em;color:var(--cream)}
+.reserve-split p{margin-top:10px;font-size:.88rem;color:#A79E84;line-height:1.9}
+.link-gold{display:inline-block;margin-top:14px;color:var(--gold-soft);font-size:.85rem;text-decoration:underline;text-underline-offset:3px}
+@media (min-width:860px){.reserve-split{grid-template-columns:1fr 1fr;gap:64px}}
+
+/* ---- 宴会・貸切の問い合わせフォーム ---- */
+.inquiry-form{margin-top:36px;padding-top:36px;border-top:1px solid var(--line-soft);display:grid;gap:22px;text-align:left;max-width:620px}
+.inquiry-row{display:grid;gap:22px}
+.inquiry-form label{display:grid;gap:8px;font-size:.82rem;letter-spacing:.04em;color:#A79E84}
+.inquiry-form input,.inquiry-form select,.inquiry-form textarea{
+  width:100%;font-family:var(--sans);font-size:.95rem;color:var(--cream);background:transparent;
+  border:0;border-bottom:1px solid var(--line-soft);padding:10px 2px;border-radius:0;transition:border-color .2s ease}
+.inquiry-form input:focus,.inquiry-form select:focus,.inquiry-form textarea:focus{outline:none;border-color:var(--gold)}
+.inquiry-form select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold-soft) 50%),linear-gradient(135deg,var(--gold-soft) 50%,transparent 50%);background-position:calc(100% - 4px) center,calc(100% - 10px) center;background-size:6px 6px;background-repeat:no-repeat}
+.inquiry-form select option{color:#1A1613}
+.inquiry-form textarea{resize:vertical;min-height:5em}
+.inquiry-form .btn{justify-self:start}
+.inquiry-form .form-status{font-size:.82rem;color:#A79E84;min-height:1.4em}
+.inquiry-form .form-status.is-ok{color:#7FA87F}
+.inquiry-form .form-status.is-error{color:#C77B6E}
+@media (min-width:860px){.inquiry-row{grid-template-columns:1fr 1fr}}
+
+/* ---- アクセス ---- */
+.info-grid{display:grid;gap:32px}
+.info dl{display:grid;grid-template-columns:6em 1fr;gap:14px 10px;font-size:.9rem;color:#B9B29B}
+.info dt{color:var(--gold-soft);letter-spacing:.03em}
+@media (min-width:860px){.info-grid{grid-template-columns:1fr 1fr;gap:64px}}
+
+/* ---- フッター ---- */
+.footer{padding:32px 24px;text-align:center;font-size:.78rem;color:#6E664F;border-top:1px solid var(--line-soft)}
+
+/* サンプル用バナー：本番案件では削除 */
+.ginza-ribbon{background:var(--gold);color:#1A1306;text-align:center;font-size:.78rem;padding:8px 12px;position:relative;z-index:50}
+.ginza-ribbon a{color:#1A1306;font-weight:700;margin-left:.6em}
+
+/* ---- お礼ページ ---- */
+.thanks{min-height:calc(100svh - 40px);display:flex;align-items:center;justify-content:center;padding:120px 24px 64px;text-align:center}
+.thanks-inner{max-width:520px}
+.thanks h1{margin-top:16px;font-family:var(--serif);font-weight:700;font-size:clamp(1.7rem,6vw,2.4rem);line-height:1.6;letter-spacing:.03em}
+.thanks-lead{margin-top:24px;color:#B9B29B;font-size:.95rem;line-height:2}
+.thanks-note{margin-top:32px;color:#8B836C;font-size:.82rem}
+.thanks-back{margin-top:40px}
+
+/* ---- スクロール演出：画面に入ったら静かにフェードイン ---- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.course-list .reveal{transition-delay:calc(var(--i,0) * 60ms)}
+@media (prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
+
+/* ---- 予約タブ ---- */
+.reserve-tabs{margin-top:40px;display:inline-flex;gap:0;border:1px solid var(--line-soft);border-radius:999px;padding:4px}
+.reserve-tab{padding:11px 22px;background:none;border:0;border-radius:999px;color:#A79E84;font-family:var(--sans);font-size:.85rem;letter-spacing:.03em;cursor:pointer;transition:background-color .25s ease,color .25s ease}
+.reserve-tab.is-active{background:var(--gold);color:#1A1306}
+.reserve-panel{display:none}
+.reserve-panel.is-active{display:block}
+.reserve-alt-note{margin-top:22px;font-size:.82rem;color:#8B836C}
+
+/* ---- ギャラリーのボタン化（Lightbox用） ---- */
+.gal-item{border:0;padding:0;font:inherit;cursor:pointer}
+.gal-item:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+
+/* ---- ライトボックス ---- */
+.lightbox{position:fixed;inset:0;z-index:60;background:rgba(6,5,3,.92);display:flex;align-items:center;justify-content:center;padding:40px 24px;
+  opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
+.lightbox.is-open{opacity:1;visibility:visible}
+.lightbox-box{width:min(90vw,760px);aspect-ratio:4/3;--ph-bg:#221C13;--ph-fg:#B9A876;font-size:1.05rem;letter-spacing:.05em}
+.lightbox-close{position:absolute;top:22px;right:24px;width:44px;height:44px;border:1px solid var(--line-soft);background:none;color:var(--cream);font-size:1.6rem;line-height:1;cursor:pointer;border-radius:50%}
+.lightbox-close:hover{border-color:var(--gold)}
+
+
