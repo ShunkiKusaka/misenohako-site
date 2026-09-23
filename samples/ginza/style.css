@@ -201,9 +201,9 @@ body.menu-open{overflow:hidden}
 .thanks-back{margin-top:40px}
 
 /* ---- スクロール演出：画面に入ったら静かにフェードイン ---- */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.reveal.is-visible{opacity:1;transform:translateY(0)}
-.course-list .reveal{transition-delay:calc(var(--i,0) * 60ms)}
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.is-visible{opacity:1;transform:translateY(0)}
+.js .course-list .reveal{transition-delay:calc(var(--i,0) * 60ms)}
 @media (prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
 
 /* ---- 予約タブ ---- */
@@ -226,4 +226,4 @@ body.menu-open{overflow:hidden}
 .lightbox-close{position:absolute;top:22px;right:24px;width:44px;height:44px;border:1px solid var(--line-soft);background:none;color:var(--cream);font-size:1.6rem;line-height:1;cursor:pointer;border-radius:50%}
 .lightbox-close:hover{border-color:var(--gold)}
 
-
+.h2-gap{margin-bottom:22px}
