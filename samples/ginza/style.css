@@ -233,3 +233,8 @@ body.menu-open{overflow:hidden}
 .h2-gap{margin-bottom:22px}
 
 .chef-photo img{display:block;width:100%;height:auto}
+
+/* ---- ヒーローの背景写真 ---- */
+.hero-bg{background:
+  linear-gradient(180deg,rgba(14,12,9,.30) 0%,rgba(14,12,9,.50) 45%,rgba(14,12,9,.92) 100%),
+  url("../../assets/tmp/ginza/ginza0.jpg") center 40%/cover no-repeat}
