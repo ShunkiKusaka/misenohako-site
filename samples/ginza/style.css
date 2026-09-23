@@ -223,8 +223,13 @@ body.menu-open{overflow:hidden}
 .lightbox{position:fixed;inset:0;z-index:60;background:rgba(6,5,3,.92);display:flex;align-items:center;justify-content:center;padding:40px 24px;
   opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
 .lightbox.is-open{opacity:1;visibility:visible}
-.lightbox-box{width:min(90vw,760px);aspect-ratio:4/3;--ph-bg:#221C13;--ph-fg:#B9A876;font-size:1.05rem;letter-spacing:.05em}
+.lightbox-box{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:min(92vw,1100px)}
+.lightbox-box img{display:block;max-width:100%;max-height:78vh;width:auto;height:auto;object-fit:contain}
+.lightbox-box img[hidden]{display:none}
+.lightbox-caption{color:#C9C2AE;font-size:.88rem;letter-spacing:.05em;text-align:center}
 .lightbox-close{position:absolute;top:22px;right:24px;width:44px;height:44px;border:1px solid var(--line-soft);background:none;color:var(--cream);font-size:1.6rem;line-height:1;cursor:pointer;border-radius:50%}
 .lightbox-close:hover{border-color:var(--gold)}
 
 .h2-gap{margin-bottom:22px}
+
+.chef-photo img{display:block;width:100%;height:auto}

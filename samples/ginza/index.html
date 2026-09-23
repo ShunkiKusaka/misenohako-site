@@ -42,7 +42,7 @@
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-inner">
       <p class="hero-eyebrow">GINZA — FRENCH RESTAURANT / SINCE 1975</p>
-      <h1><span>客をもてなす、</span><span>饗宴の間。</span></h1>
+      <h1><span>一皿に、</span><span>時を重ねて。</span></h1>
       <p class="hero-lead">銀座の一角で50年。個室から大宴会場まで、接待、会食、祝いの席まで、あらゆる集いをお預かりしてきました。</p>
       <div class="hero-cta">
         <a class="btn btn-fill" href="#reserve">ご予約・お問い合わせ</a>
@@ -79,7 +79,9 @@
 
       <div class="room-list">
         <div class="room reveal">
-          <div class="ph r-43" role="img" aria-label="個室「南天」"><span>写真</span></div>
+          <div class="ph r-43">
+            <img src="../../assets/tmp/ginza/ginza1.jpg" alt="個室「南天」" width="1200" height="900" loading="lazy">
+          </div>
           <div class="room-body">
             <h3>個室「南天」「桔梗」ほか全4室</h3>
             <p>4〜20名までの、接待・会食向けの個室です。完全個室のため、機密性の高いお話にもご利用いただけます。</p>
@@ -87,7 +89,9 @@
           </div>
         </div>
         <div class="room reveal">
-          <div class="ph r-43" role="img" aria-label="大宴会場"><span>写真</span></div>
+          <div class="ph r-43">
+            <img src="../../assets/tmp/ginza/ginza2.jpg" alt="大宴会場「銀翠の間」" width="1200" height="900" loading="lazy">
+          </div>
           <div class="room-body">
             <h3>大宴会場「銀翠の間」</h3>
             <p>着席で120名、立食で180名まで対応する大宴会場です。周年パーティー、結婚披露宴、大人数での会食にご利用いただけます。</p>
@@ -135,7 +139,9 @@
 
   <section class="section section-paper" id="chef">
     <div class="section-inner chef-grid reveal">
-      <div class="ph r-34" role="img" aria-label="シェフの写真"><span>シェフの写真</span></div>
+      <div class="chef-photo">
+        <img src="../../assets/tmp/ginza/ginza3.jpg" alt="CHEF" width="1200" height="900" loading="lazy">
+      </div>
       <div>
         <p class="eyebrow">CHEF</p>
         <p class="chef-lead">「100名の宴も、<br class="pc">1名のための一皿と同じ火加減で。」</p>
@@ -150,17 +156,30 @@
   <!-- ギャラリー：クリックで拡大表示（Lightbox） -->
   <section class="section-bleed" id="gallery">
     <div class="gallery">
-      <button class="ph gal-item r-43" data-caption="大宴会場「銀翠の間」"><span>写真1</span></button>
-      <button class="ph gal-item r-11" data-caption="個室のしつらい"><span>写真2</span></button>
-      <button class="ph gal-item r-11" data-caption="コースの一皿"><span>写真3</span></button>
-      <button class="ph gal-item r-11" data-caption="披露宴の様子"><span>写真4</span></button>
-      <button class="ph gal-item r-11" data-caption="メインダイニング"><span>写真5</span></button>
+      <button class="ph gal-item r-43" data-caption="大宴会場「銀翠の間」">
+        <img src="../../assets/tmp/ginza/ginza2.jpg" alt="個室「南天」" width="1200" height="900" loading="lazy">
+      </button>
+      <button class="ph gal-item r-11" data-caption="個室のしつらい">
+        <img src="../../assets/tmp/ginza/ginza4.jpg" alt="個室のしつらい" width="1200" height="900" loading="lazy">
+      </button>
+      <button class="ph gal-item r-11" data-caption="コースの一皿">
+        <img src="../../assets/tmp/ginza/ginza5.jpg" alt="コースの一皿" width="1200" height="900" loading="lazy">
+      </button>
+      <button class="ph gal-item r-11" data-caption="披露宴の様子">
+        <img src="../../assets/tmp/ginza/ginza6.jpg" alt="披露宴の様子" width="1200" height="900" loading="lazy">
+      </button>
+      <button class="ph gal-item r-11" data-caption="メインダイニング">
+        <img src="../../assets/tmp/ginza/ginza7.jpg" alt="メインダイニング" width="1200" height="900" loading="lazy">
+      </button>
     </div>
   </section>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lightbox-close" aria-label="閉じる">&times;</button>
-    <div class="lightbox-box ph"><span class="lightbox-caption" id="lightbox-caption"></span></div>
+    <figure class="lightbox-box">
+      <img id="lightbox-img" alt="" hidden>
+      <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+    </figure>  
   </div>
 
   <section class="section reserve" id="reserve">

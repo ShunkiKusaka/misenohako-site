@@ -115,12 +115,23 @@ document.documentElement.classList.add('js');
   setupForm(document.getElementById('room-form'));
   setupForm(document.getElementById('banquet-form'));
 
-  /* ---- ギャラリーの拡大表示（Lightbox） ---- */
+    /* ---- ギャラリーの拡大表示（Lightbox） ---- */
   const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
   const galItems = document.querySelectorAll('.gal-item');
   const closeBtn = document.querySelector('.lightbox-close');
-  const openLightbox = (caption) => {
+  const openLightbox = (item) => {
+    const img = item.querySelector('img');
+    const caption = item.dataset.caption || '';
+    if (img) {
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt || caption;
+      lightboxImg.hidden = false;
+    } else {
+      lightboxImg.removeAttribute('src');
+      lightboxImg.hidden = true;
+    }
     lightboxCaption.textContent = caption;
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
@@ -132,7 +143,7 @@ document.documentElement.classList.add('js');
     document.body.classList.remove('menu-open');
   };
   galItems.forEach(item => {
-    item.addEventListener('click', () => openLightbox(item.dataset.caption || ''));
+    item.addEventListener('click', () => openLightbox(item));
   });
   closeBtn.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
