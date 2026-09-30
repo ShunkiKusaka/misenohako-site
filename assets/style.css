@@ -226,15 +226,20 @@ details p{padding:0 0 22px;color:var(--muted);font-size:.95rem}
 }
 
 /* ===== Dev card (カスタム開発の実績) ===== */
-.dev-card{margin-top:20px;padding:26px;background:var(--indigo);color:#fff;border-radius:var(--radius);display:flex;flex-direction:column;gap:10px}
-.dev-card-tag{align-self:flex-start;padding:4px 12px;border-radius:999px;background:var(--tag);color:var(--tag-ink);font-size:.75rem;font-weight:700}
-.dev-card h3{font-size:1.15rem;font-weight:900}
-.dev-card p{font-size:.9rem;color:#D5DBEA}
-.dev-card .btn{align-self:flex-start;margin-top:4px}
+/* 予約アプリと同じ配色B(生成り・朱色)。背景の食べ物アイコンは、CSSの中に絵を埋め込んでいる */
+.dev-card{margin-top:20px;padding:26px;background-color:#F1E8D8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' fill='none' stroke='%23E8DAC1' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 26h30a15 15 0 0 1-30 0z'/%3E%3Cpath d='M28 10l14 12M33 7l13 11'/%3E%3Cpath d='M82 22h22v12a9 9 0 0 1-9 9h-4a9 9 0 0 1-9-9z'/%3E%3Cpath d='M104 26h3a5 5 0 0 1 0 10h-3'/%3E%3Cpath d='M88 14c0-3 3-3 3-6M96 14c0-3 3-3 3-6'/%3E%3Cpath d='M20 76v10a4 4 0 0 0 8 0V76M24 76v30'/%3E%3Cpath d='M38 76c6 4 6 14 0 17v13'/%3E%3Cpath d='M96 78l14 24H82z'/%3E%3Cpath d='M90 94h12v8H90z'/%3E%3C/svg%3E");color:#231F1A;border:1px solid #E7DDCB;border-bottom:3px solid #B3362A;border-radius:var(--radius);display:flex;flex-direction:column;gap:10px}
+.dev-card-tag{align-self:flex-start;padding:4px 12px;border-radius:4px;background:#B3362A;color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.04em}
+.dev-card h3{margin:0;font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-size:1.35rem;font-weight:700;color:#231F1A}
+.dev-card p{margin:0;font-size:.9rem;line-height:1.8;color:#5E574C}
+.dev-card .btn{align-self:flex-start;margin-top:6px}
+.dev-card .btn-tag{background:#B3362A;color:#fff}
+.dev-card .btn-tag:hover{background:#8C2A20}
 @media (min-width:860px){
-  .dev-card{flex-direction:row;align-items:center;gap:28px;padding:30px 32px}
-  .dev-card > *{flex-shrink:0}
-  .dev-card p{flex:1;flex-shrink:1;margin:0}
+  /* 左に文章、右にボタン */
+  .dev-card{display:grid;grid-template-columns:1fr auto;column-gap:40px;row-gap:8px;align-items:center;padding:32px 36px}
+  .dev-card-tag,.dev-card h3,.dev-card p{grid-column:1}
+  .dev-card-tag{justify-self:start}
+  .dev-card .btn{grid-column:2;grid-row:1 / span 3;align-self:center;margin:0}
 }
 
 /* ---- 銀座カードのミニプレビューの色 ---- */
